@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 
 
 export default class App extends React.Component {
@@ -30,6 +31,21 @@ export default class App extends React.Component {
       ]
     }
   }
+
+  handleClear = () =>{
+    //1. setState
+    //2. loop through all todos
+    //3. remove all todos that have completed === true
+    //4. save filtered todos to state
+    
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(todo =>{
+        return (todo.completed === false);
+      })
+    });
+  }
+
   render() {
     const{ todos } =this.state;
     console.log(todos);
@@ -40,13 +56,10 @@ export default class App extends React.Component {
 
         <TodoList todos={todos}/>
 
-        <form>
-          <input/>
-          <button>App</button>
-        </form>
+        <TodoForm/>
 
-        <button>Clear</button>
+        <button onClick={this.handleClear}>Clear</button>
       </div>
-    )
+    );
   }
 }
