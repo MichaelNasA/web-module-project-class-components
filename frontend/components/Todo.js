@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default class Todo extends React Componet{
+export default class Todo extends React.Componet{
   render(){
-    cosnt {id, name, compleated} = this.props.Todo
+    const {id, name, compleated} = this.props.todo
+    const {toggleCompetion} = this.props
     return(
-      <div>
-        {name}
+      <div onClick={() => toggleCompetion(id)}>
+        {name} {compleated && "^"}
       </div>
     )
   }
